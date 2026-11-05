@@ -1,0 +1,16 @@
+# Flutter/Dart/Pub
+.dart_tool/
+.packages
+.pub/
+build/
+
+# Flutter generated
+**/generated_plugin_registrant.dart
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# Misc
+.DS_Store
