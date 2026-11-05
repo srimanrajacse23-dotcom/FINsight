@@ -11,6 +11,11 @@ This repository now contains a clean Flutter foundation aligned to:
 - Riverpod 3 (`flutter_riverpod`)
 - GoRouter (`go_router`)
 
+Current dependency constraints in `pubspec.yaml`:
+
+- `flutter_riverpod: ^3.0.3`
+- `go_router: ^16.2.4`
+
 ### Architecture
 
 Feature-first and modular structure:
@@ -46,4 +51,6 @@ lib/
 - Routing is centralized in `lib/app/router.dart` with named route constants.
 - Theme and color tokens are centralized in `lib/app/theme/` using the FINsight visual direction (ivory background, forest green primary, pale sage secondary).
 - `AppShell` provides responsive constraints and spacing for mobile/tablet/desktop without coupling layout logic to feature screens.
+- Onboarding and profile-selection placeholders are intentionally lightweight and responsive-only scaffolds (not final dashboards).
 - Current screens are placeholders only, using mock/profile context. No real financial integrations, auth flows, or backend APIs are implemented.
+- Platform directories (`android/`, `ios/`, `web/`, `macos/`) are expected to come from `flutter create` and are intentionally not modified by this foundation layer.

@@ -20,7 +20,7 @@ abstract final class AppTheme {
       bodyLarge: TextStyle(height: 1.5, color: AppColors.ink),
       bodyMedium: TextStyle(height: 1.5, color: AppColors.ink),
     ),
-    cardTheme: const CardTheme(
+    cardTheme: const CardThemeData(
       color: AppColors.card,
       elevation: 1,
       margin: EdgeInsets.zero,
