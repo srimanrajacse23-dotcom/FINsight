@@ -1,0 +1,17 @@
+
+# FINsight Dart and Flutter analyzer configuration
+
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - build/**
+    - .dart_tool/**
+    - android/**
+    - ios/**
+    - web/**
+    - macos/**
+
+linter:
+  rules:
+  # Add project-specific lint rules here when needed.
