@@ -1,41 +1,24 @@
 import 'package:flutter/material.dart';
 
-import '../../core/constants/app_spacing.dart';
-import '../../core/utils/context_extensions.dart';
+import '../components/finsight_backdrop.dart';
 
+/// Common page frame: ivory backdrop, safe area, optional bottom waves.
 class AppShell extends StatelessWidget {
-  const AppShell({required this.child, super.key});
+  const AppShell({
+    super.key,
+    required this.child,
+    this.showBottomWaves = false,
+  });
 
   final Widget child;
+  final bool showBottomWaves;
 
   @override
   Widget build(BuildContext context) {
-    final horizontalPadding = context.isDesktop ? AppSpacing.xl : AppSpacing.lg;
-    final maxWidth = context.isDesktop ? 1100.0 : 760.0;
-
     return Scaffold(
-      body: SafeArea(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            return SingleChildScrollView(
-              child: Center(
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: maxWidth,
-                    minHeight: constraints.maxHeight,
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: horizontalPadding,
-                      vertical: AppSpacing.lg,
-                    ),
-                    child: child,
-                  ),
-                ),
-              ),
-            );
-          },
-        ),
+      body: FinsightBackdrop(
+        showBottomWaves: showBottomWaves,
+        child: SafeArea(child: child),
       ),
     );
   }
