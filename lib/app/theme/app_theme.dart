@@ -35,39 +35,31 @@ class AppTheme {
         space: 1,
       ),
       appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.ivory,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        scrolledUnderElevation: 0,
         foregroundColor: AppColors.textPrimary,
-        elevation: 0,
         centerTitle: false,
-        surfaceTintColor: Colors.transparent,
-      ),
-      cardTheme: CardThemeData(
-        color: AppColors.surface,
-        elevation: 0,
-        margin: EdgeInsets.zero,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
-          side: const BorderSide(color: AppColors.border),
-        ),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.surface,
         contentPadding: const EdgeInsets.symmetric(
-          horizontal: 18,
+          horizontal: 20,
           vertical: 16,
         ),
+        hintStyle: AppTypography.body,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(18),
           borderSide: const BorderSide(color: AppColors.border),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(18),
           borderSide: const BorderSide(color: AppColors.border),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: AppColors.forest, width: 1.5),
+          borderRadius: BorderRadius.circular(18),
+          borderSide: const BorderSide(color: AppColors.forest, width: 1.6),
         ),
       ),
       navigationBarTheme: NavigationBarThemeData(
@@ -75,17 +67,43 @@ class AppTheme {
         indicatorColor: AppColors.mint,
         elevation: 0,
         labelTextStyle: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return const TextStyle(
-              color: AppColors.forest,
-              fontWeight: FontWeight.w700,
-            );
-          }
-          return const TextStyle(
-            color: AppColors.textSecondary,
-            fontWeight: FontWeight.w500,
+          final selected = states.contains(WidgetState.selected);
+          return TextStyle(
+            fontSize: 12,
+            fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
+            color: selected ? AppColors.forest : AppColors.textSecondary,
           );
         }),
+        iconTheme: WidgetStateProperty.resolveWith((states) {
+          final selected = states.contains(WidgetState.selected);
+          return IconThemeData(
+            color: selected ? AppColors.forest : AppColors.textSecondary,
+          );
+        }),
+      ),
+      navigationRailTheme: NavigationRailThemeData(
+        backgroundColor: AppColors.surface,
+        indicatorColor: AppColors.mint,
+        elevation: 0,
+        selectedIconTheme: const IconThemeData(
+          color: AppColors.forest,
+          size: 24,
+        ),
+        unselectedIconTheme: const IconThemeData(
+          color: AppColors.textSecondary,
+          size: 22,
+        ),
+        selectedLabelTextStyle: const TextStyle(
+          color: AppColors.forest,
+          fontWeight: FontWeight.w700,
+          fontSize: 13,
+        ),
+        unselectedLabelTextStyle: const TextStyle(
+          color: AppColors.textSecondary,
+          fontWeight: FontWeight.w500,
+          fontSize: 13,
+        ),
+        groupAlignment: -0.75,
       ),
     );
   }

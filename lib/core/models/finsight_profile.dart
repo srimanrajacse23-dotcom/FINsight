@@ -1,6 +1,17 @@
 import 'package:flutter/widgets.dart';
 
-enum ProfileType { personal, business, freelancer, merchant }
+import '../../app/routes.dart';
+
+enum ProfileType {
+  personal,
+  business,
+  freelancer,
+  merchant;
+
+  /// Returns the profile whose name equals [value], or null when unknown.
+  /// Matching is case-sensitive.
+  static ProfileType? tryParse(String? value) => values.asNameMap()[value];
+}
 
 @immutable
 class FinsightProfile {
@@ -20,5 +31,6 @@ class FinsightProfile {
   final IconData icon;
   final List<String> highlights;
 
-  String get routePath => '/dashboard/${type.name}';
+  /// Bare profile route. The router redirects it to the Home tab.
+  String get routePath => AppRoutes.profileDashboard(type.name);
 }
